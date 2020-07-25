@@ -25,7 +25,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('docker/toolbox') {
+                dir ('docker/app01') {
                 	sh 'docker build -t ikote/dind:latest . '
                 }
             }
