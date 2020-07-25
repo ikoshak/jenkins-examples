@@ -7,8 +7,8 @@ LABEL MAINTAINER="iKote"
 USER root
 
 RUN cd /usr/local/bin && \
-curl https://master.dockerproject.org/linux/amd64/docker > docker && \
-chmod +x docker && \
+curl https://master.dockerproject.org/linux/amd64/docker > docker
+RUN chmod +x docker && \
 groupadd -g 999 docker && \
 usermod -a -G docker jenkins
 
