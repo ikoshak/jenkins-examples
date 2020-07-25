@@ -1,5 +1,16 @@
-FROM alpine
-RUN apk add --no-cache curl wget busybox-extras netcat-openbsd python py-pip bash && \
-    pip install awscli
-RUN apk --purge -v del py-pip
-CMD tail -f /dev/null
+FROM jenkins/jenkins:lts
+
+LABEL NAME="ikote/dind"
+LABEL VERSION="0.0.1"
+LABEL MAINTAINER="iKote"
+
+USER root
+
+RUN cd /usr/local/bin && \
+curl https://master.dockerproject.org/linux/amd64/docker > docker && \
+chmod +x docker && \
+groupadd -g 999 docker && \
+usermod -a -G docker jenkins
+
+USER jenkins
+
