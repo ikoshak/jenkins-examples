@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/app01') {
-                	sh 'docker build -t dind:latest . '
+                	sh 'docker build -t ikote/dind:latest . '
                 }
             }
         }
