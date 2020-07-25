@@ -22,12 +22,11 @@ pipeline {
                 }
             }
         }
-        stages {
-            stage("create docker image") {
-                steps {
-                    echo " ============== start building image =================="
-                    dir ('docker/app01') {
-                	    sh 'docker build -t ikote/dind:latest . '
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('docker/toolbox') {
+                	sh 'docker build -t ikote/dind:latest . '
                 }
             }
         }
@@ -39,6 +38,5 @@ pipeline {
                 '''
             }
         }
-     }
-   }
+    }
 }
